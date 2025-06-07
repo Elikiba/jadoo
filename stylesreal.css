@@ -1,0 +1,646 @@
+:root {
+  --black: rgba(0, 0, 0, 1);
+  --border-color: rgba(247, 247, 247, 1);
+  --circle: rgba(245, 245, 245, 1);
+  --d-2: rgba(213, 174, 228, 1);
+  --d-5: rgba(33, 150, 243, 1);
+  --d-6: rgba(76, 175, 80, 1);
+  --light-color: rgba(223, 215, 249, 1);
+  --text-2: rgba(132, 130, 154, 1);
+  --text-clr: rgba(94, 98, 130, 1);
+  --text-color: rgba(104, 109, 119, 1);
+  --text-heading-color: rgba(30, 29, 76, 1);
+  --white: rgba(255, 255, 255, 1);
+  --x-1: rgba(138, 121, 223, 1);
+  --x-1st: rgba(33, 40, 50, 1);
+  --x-2: rgba(65, 82, 202, 1);
+  --x-2nd: rgba(98, 70, 229, 1);
+  --x-3: rgba(240, 187, 31, 1);
+  --x-3rd: rgba(20, 24, 62, 1);
+  --x-4: rgba(241, 90, 43, 1);
+  --x-5: rgba(0, 99, 128, 1);
+  --yellow: rgba(241, 165, 1, 1);
+}
+
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+
+    --card: transparent;
+    --card-foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 215 20.2% 65.1%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --popover: 224 71% 4%;
+    --popover-foreground: 215 20.2% 65.1%;
+
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+
+    --card: transparent;
+    --card-foreground: 213 31% 91%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+
+    --secondary: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --ring: 216 34% 17%;
+
+    --radius: 0.5rem;
+  }
+}
+
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Google Sans', sans-serif;
+    background-color: #fff;
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body::before,
+body::after {
+    content: '';
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(93, 105, 229, 0.1) 0%, rgba(93, 105, 229, 0) 100%);
+    z-index: -1;
+}
+
+body::before {
+    top: -250px;
+    left: -250px;
+}
+
+body::after {
+    bottom: -250px;
+    right: -250px;
+}
+
+/* Header Styles */
+.header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.container {
+    width: 1160px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo img {
+    height: 30px;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #14183E;
+    font-size: 16px;
+    font-weight: 550;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #FF7A50;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.auth-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.login {
+    text-decoration: none;
+    color: #14183E;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.signup {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: #FF7A50;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.signup:hover {
+    background-color: #E56A42;
+}
+
+.language-selector {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.language-selector span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #14183E;
+}
+
+/* Hero Section Styles */
+.hero {
+    padding: 60px 0 120px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 40px;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 120%;
+    background-color: #FFF1DA;
+    z-index: -1;
+    top: -10%;
+    right: -20%;
+    border-radius: 50% 30% 60% 40% / 40% 60% 30% 70%;
+    transform: rotate(-5deg);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 50%;
+    padding-right: 40px;
+}
+
+.hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #DF6951;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    letter-spacing: 1.5px;
+}
+
+.hero-title {
+    font-family: 'Volkhov', Helvetica;
+    font-size: 84px;
+    font-weight: bold;
+    color: #181e4b;
+    margin: 1rem 0; 
+    letter-spacing: -3.36px;
+    line-height: 89px;
+}
+
+.enjoy-underline {
+    position: relative;
+    display: inline-block;
+}
+
+.enjoy-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background-color: #DF6951;
+    border-radius: 4px;
+    background-image: linear-gradient(90deg, #DF6951 50%, transparent 50%);
+    background-size: 8px 8px;
+}
+
+.hero-text {
+    font-family: 'Google Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5E6282;
+    line-height: 1.6;
+    margin: 1rem 0;
+    max-width: 500px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: orange;
+    color: white;
+    box-shadow: 0 15px 30px rgba(255, 122, 80, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px rgba(255, 122, 80, 0.4);
+}
+
+.btn-play {
+    display: flex;
+    align-items: center;
+    color: #5E6282;
+    font-weight: 600;
+}
+
+.play-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #DF6951;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+}
+
+.play-icon i {
+    color: white;
+    font-size: 18px;
+    margin-left: 3px;
+}
+
+.hero-image {
+    width: 45%;
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}
+
+/* Services Section Styles */
+.services {
+    padding: 120px 0;
+    background-color: #fff;
+    position: relative;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #5E6282;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+}
+
+.section-header h2 {
+    font-family: 'Volkhov', serif;
+    font-size: 45px;
+    font-weight: bold;
+    color: #14183E;
+    line-height: 1.2;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.service-card {
+    background: #fff;
+    border-radius: 36px;
+    padding: 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.1);
+}
+
+.service-card.highlighted {
+    background: #FFFFFF;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    border: 1px solid rgba(223, 105, 81, 0.1);
+}
+
+.service-card.highlighted::before {
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 100px;
+    height: 100px;
+    background: #DF6951;
+    border-radius: 50% 0 50% 50%;
+    z-index: -1;
+}
+
+.service-card.highlighted::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background: rgba(223, 105, 81, 0.1);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.service-icon {
+    width: 92px;
+    height: 78px;
+    margin: 0 auto 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    position: relative;
+}
+
+.service-card:nth-child(1) .service-icon {
+    color: #DF6951;
+}
+
+.service-card:nth-child(2) .service-icon {
+    color: #006CE4;
+}
+
+.service-card:nth-child(3) .service-icon {
+    color: #29B9E7;
+}
+
+.service-card:nth-child(4) .service-icon {
+    color: #FF7A50;
+}
+
+.service-title {
+    font-family: 'Poppins';
+    font-size: 15px;
+    font-weight: 600;
+    color: #1E1D4C;
+    margin-bottom: 5px;
+    line-height: 1.3;
+}
+
+.service-description {
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-weight: medium;
+    color: #5E6282;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 30px;
+    height: 30px;
+    background: #DF6951;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.services::after {
+    content: '';
+    position: absolute;
+    bottom: 100px;
+    left: 100px;
+    width: 20px;
+    height: 20px;
+    background: #006CE4;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+/* Destinations Section Styles */
+.destinations {
+    padding: 60px 0;
+    background-color: #fff;
+    position: relative;
+}
+
+.destinations .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.destinations .section-header h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #5E6282;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    margin-bottom: 10px;
+}
+
+.destinations .section-header h2 {
+    font-family: 'Volkhov', serif;
+    font-size: 50px;
+    font-weight: 700;
+    color: #14183E;
+    line-height: 1.2;
+}
+
+.destinations-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.destination-card {
+    background: #FFFFFF;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    width: 315px;
+    position: relative;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.destination-image {
+    width: 100%;
+    height: 457px;
+    overflow: hidden;
+    position: relative;
+}
+
+.destination-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover .destination-image img {
+    transform: scale(1.05);
+}
+
+.destination-info {
+    padding: 30px 25px;
+    background: #FFFFFF;
+}
+
+.destination-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.destination-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    color: #5E6282;
+    margin: 0;
+}
+
+.destination-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5E6282;
+}
+
+.destination-duration {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.destination-duration i {
+    color: #5E6282;
+    font-size: 16px;
+}
+
+.destination-duration span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #5E6282;
+}
+
+.spring-decoration {
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}

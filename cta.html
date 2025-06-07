@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UIDUX.COM - UI/UX Design Resources</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cta.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    </head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <div class="logos">
+                <img src="images/platforms.png" alt="Platforms">
+            </div>
+        </div>
+
+        <h1>
+            Thank You For Trying Out:
+            <span class="brand-name">UIDUX.COM</span>
+        </h1>
+
+        <p class="subtitle">
+            Get Unlimited Downloads with Small Monthly Fee<br>
+            starting at $9.99/month or $4.99/month with annual plan
+        </p>
+
+        <p class="description">
+            You can use the resources to create themes for figma, wordpress or<br>
+            any other cms that you can resell. No attribution required
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">400+</div>
+                <div class="stat-label">Dashboards</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Homepages</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Shopify Stores</div>
+            </div>
+        </div>
+
+        <div class="weekly-update">
+            Atleast 10 New Designs Added Every Week
+        </div>
+
+        <div class="pricing-section">
+            <div class="pricing-title">
+                Get All These With Just One Simple Monthly Price
+            </div>
+            
+            <div class="pricing-options">
+                <div class="price price-monthly">$9.99/month</div>
+                <div class="price price-annual">$4.99/month with annual plan</div>
+            </div>
+        </div>
+
+        <div class="final-brand">UIDUX.COM</div>
+    </div>
+
+    <script>
+        // Add some interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const statCards = document.querySelectorAll('.stat-card');
+            
+            statCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Animate numbers counting up
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            const animateNumbers = () => {
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.textContent);
+                    const increment = target / 50;
+                    let current = 0;
+                    
+                    // Start from 0 for the animation
+                    stat.textContent = '0+';
+                    
+                    const updateNumber = () => {
+                        if (current < target) {
+                            current += increment;
+                            stat.textContent = Math.floor(current) + '+';
+                            requestAnimationFrame(updateNumber);
+                        } else {
+                            stat.textContent = target + '+';
+                        }
+                    };
+                    
+                    setTimeout(updateNumber, Math.random() * 500 + 800);
+                });
+            };
+
+            // Trigger animation after a delay
+            setTimeout(animateNumbers, 1000);
+        });
+    </script>
+</body>
+</html>
